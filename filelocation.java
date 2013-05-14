@@ -2,16 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package cachesimulator;
+package testcachesim;
 
 /**
  *
  * @author Magnus
  */
-public class filelocation {
+public class FileLocation {
   
-    public String fileLocation(){
-        String y = "C:\\Users\\Magnus\\Documents\\NetBeansProjects\\testCachesim\\build\\classes\\testcachesim\\test.txt";
+    public String getFileLocation(){
+        String y = "C:\\Users\\Magnus\\workspace\\TestCachesim\\src\\testcachesim\\test.txt";
         return y;
     }
 }
