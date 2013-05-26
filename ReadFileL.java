@@ -1,6 +1,7 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * ReadFileL.java
+ * Written 2013 by M Koch
+ * Copyright abandoned. This file is in the public domain.
  */
 package testcachesim;
 
@@ -56,7 +57,7 @@ public class ReadFileL {
 					type = CacheType.BOTH;
 				}
 
-				MemInfo m1 = new MemInfo(type, y, hexaToDecimal(y), z);
+				MemInfo m1 = new MemInfo(type,x, y, hexaToDecimal(y), z);
 				arrayList.add(m1);
 
 				System.out.printf("%s %s %s\n", x, y, z);
@@ -87,7 +88,6 @@ public class ReadFileL {
 
 		int xInt = Integer.valueOf(x);
 		return xInt;
-
 	}
 
 	private int convertZ(String z) { // Converts z to Int and if comment set to
@@ -110,16 +110,17 @@ public class ReadFileL {
 	}
 
 	private void xValidation(int xInt) {
-		// 0. Läsning av data för att utföra en Load-instruktion.
-		// 1. Skrivning av data för att utföra en Store-instruktion.
-		// 2. Instruktionshämning.
-		// 3. Escape Record (ska ignoreras av simulatorn).
-		// 4. Flush Cache, som nollställer alla giltig-bitar i både
-		// instruktionscache och datacache.
+		// 0. Load-instruction.
+		// 1. Store-instruction.
+		// 2. Instruction
+		// 3. Escape Record (Should be ignored by simulator)
+		// 4. Flush Cache, resets all valid bits in both data cache and instruction cache
+		
 		if (xInt == 0 || xInt == 1 || xInt == 2 || xInt == 3 || xInt == 4)
 			System.out.println("x OK!");
 		else
-			System.err.println("Big fucking error!");
+			System.out.println("Type dosn't exist");
+			throw new RuntimeException();
 	}
 
 	private int zValidation(int zInt) { // Validates that Z actually is the
@@ -129,7 +130,7 @@ public class ReadFileL {
 			System.out.println("z OK!");
 			return zInt;
 		} else {
-			System.out.println("Super mega action error!");
+			System.out.println("Size is incorrect");
 			throw new RuntimeException();
 		}
 
@@ -143,7 +144,7 @@ public class ReadFileL {
 			System.out.println(yIntDeciform + " is a multiple of " + zInt);
 
 		else {
-			System.out.println(yIntDeciform + " hkfwehjkis a not multiple of "
+			System.out.println(yIntDeciform + " is not multiple of "
 					+ zInt + " hex ");
 			throw new RuntimeException();
 		}

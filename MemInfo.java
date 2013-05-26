@@ -1,3 +1,8 @@
+/*
+ * MemInfo.java
+ * Written 2013 by M Koch
+ * Copyright abandoned. This file is in the public domain.
+ */
 package testcachesim;
 
 public class MemInfo {
@@ -9,9 +14,11 @@ public class MemInfo {
 	private Long timestamp;
 	private int usageCounter;
 	private int programCounter;
+	private String type2;
 
-	public MemInfo(CacheType type, String hexAddress, int decAddress, String size) {
+	public MemInfo(CacheType type, String type2, String hexAddress, int decAddress, String size) {
 		this.type = type;
+		this.type2 = type2;
 		this.hexAddress = hexAddress;
 		this.decAddress = decAddress;
 		this.size = size;
@@ -19,6 +26,14 @@ public class MemInfo {
 		this.usageCounter = 0;
 		this.programCounter = 0;
 
+	}
+
+	public String getType2() {
+		return type2;
+	}
+
+	public void setType2(String type2) {
+		this.type2 = type2;
 	}
 
 	public CacheType getType() {
